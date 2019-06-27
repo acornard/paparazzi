@@ -1,6 +1,6 @@
 <!DOCTYPE flight_plan SYSTEM "flight_plan.dtd">
 
-<flight_plan name="BOGODRONE" alt="262" ground_alt="260" lat0="43 56 13.34" lon0="1 46 59.83" max_dist_from_home="50" security_height="0.3">
+<flight_plan name="BOGODRONE" alt="2" ground_alt="0" lat0="43 56 13.34" lon0="1 46 59.83" max_dist_from_home="50" security_height="0.3">
 	<header>
 		#include "autopilot.h"
 	</header>
@@ -29,16 +29,12 @@
 			<attitude pitch="0" roll="0" throttle="0" vmode="throttle" until="FALSE"/>
 		</block>
 		<block key="t" name="Takeoff" strip_button="Takeoff" strip_icon="takeoff.png">
-			<!--<exception cond="GetPosAlt() > 262" deroute="Standby"/>-->
 			<call_once fun="NavSetWaypointHere(WP_CLIMB)"/>
-			<stay vmode="throttle" throttle="0.9" wp="CLIMB" until="GetPosAlt() > 261"/>
-			<!--<go wp="CLIMB" alt="2"/>-->
-			<!--<stay wp="CLIMB" until="MoreThan(NavBlockTime(), 60)"/>-->
+			<go wp="CLIMB" alt="2"/>
 		</block>
 		<block key="s" name="Standby" strip_button="Standby" strip_icon="home.png">
 			<call_once fun="NavSetWaypointHere(WP_STDBY)"/>
-			<!--<stay wp="STDBY" alt="GetPosAlt()"/>-->
-			<attitude roll="0" vmode="throttle" throttle="0.78"/>
+			<stay wp="STDBY" alt="2"/>
 		</block>
 		<block name="Land here" strip_button="Land Here" strip_icon="land-right.png">
 			<call_once fun="NavSetWaypointHere(WP_LAND)"/>

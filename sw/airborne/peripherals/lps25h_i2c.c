@@ -113,7 +113,7 @@ void lps25h_i2c_event(struct Lps25h_I2c *lps)
     if (lps->i2c_trans.status == I2CTransFailed) {
       lps->i2c_trans.status = I2CTransDone;
     } else if (lps->i2c_trans.status == I2CTransSuccess) {
-      lps->data = Int32FromBuf(lps->i2c_trans.buf, 0)
+      lps->data = Int32FromBuf(lps->i2c_trans.buf, 0);
       lps->data_available = true;
       lps->i2c_trans.status = I2CTransDone;
     }
